@@ -1,0 +1,260 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* HEADER */
+.top-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+  border-bottom: 1px solid #eee;
+}
+
+/* Icons */
+.icon {
+  font-size: 20px;
+  cursor: pointer;
+}
+.right-icon i {
+  margin-left: 20px;
+}
+
+/* Logo */
+.logo img {
+  width: 300px;
+  height: auto;
+}
+
+/* NAVBAR */
+.navbar {
+  border-bottom: 1px solid #eee;
+}
+
+.navbar ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 15px 0;
+}
+
+.navbar ul li {
+  margin: 0 20px;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+  color: #e63946;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+/* HERO SECTION */
+.hero {
+  position: relative;
+  height: 90vh;
+  background-image: url("../images/hero section.jpg"); 
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  padding-left: 80px;
+}
+
+/* POST CARD */
+.post-card {
+  background: #fff;
+  padding: 40px;
+  max-width: 480px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* META TEXT */
+.post-card .meta {
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #777;
+  display: block;
+  margin-bottom: 15px;
+}
+
+/* TITLE */
+.post-card h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+/* DESCRIPTION */
+.post-card p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+/* READ MORE */
+.read-more {
+  text-decoration: none;
+  font-weight: bold;
+  color: #e63946;
+}
+/* POSTS SECTION */
+.posts-section {
+  padding: 80px 100px;
+}
+
+.section-header span {
+  letter-spacing: 2px;
+  font-size: 12px;
+  color: #777;
+}
+
+.section-header h2 {
+  font-size: 42px;
+  margin: 15px 0 50px;
+}
+
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.post-item img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.post-item h3 {
+  font-size: 22px;
+  margin: 20px 0 10px;
+}
+
+.post-item span {
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #888;
+}
+
+/* ABOUT US SECTION */
+.about-section {
+  padding: 80px 100px;
+  background-color: #f9f9f9;
+}
+
+.about-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  margin: 50px;
+
+}
+
+/* CARD STYLE */
+.about-card {
+  background: #fff;
+  padding: 40px 30px;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+/* ICON */
+.about-card i {
+  font-size: 40px;
+  color: black;
+  margin-bottom: 20px;
+}
+
+/* TITLE */
+.about-card h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+/* DESCRIPTION */
+.about-card p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* HOVER EFFECT */
+.about-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+.footer {
+  background-color: #000;
+  color: #fff;
+  padding: 60px 100px 20px;
+}
+
+/* Layout */
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(3, z);
+  gap: 40px;
+}
+
+/* Footer Box */
+.footer-box h3 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.footer-box p {
+  font-size: 14px;
+  color: #ccc;
+  line-height: 1.7;
+}
+
+/* Links */
+.footer-box ul {
+  list-style: none;
+}
+
+.footer-box ul li {
+  margin-bottom: 10px;
+}
+
+.footer-box ul li a {
+  text-decoration: none;
+  color: #ccc;
+  transition: color 0.3s;
+}
+
+.footer-box ul li a:hover {
+  color: #fff;
+}
+
+/* Icons */
+.footer-box i {
+  margin-right: 10px;
+  color: #e63946;
+}
+
+/* Bottom */
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #333;
+  margin-top: 40px;
+  padding-top: 15px;
+  font-size: 14px;
+  color: #aaa;
+}

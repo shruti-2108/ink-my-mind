@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login | Ink My Mind</title>
+  <link rel="stylesheet" href="../css/auth.css">
+</head>
+<body>
+
+  <div class="auth-container">
+    <div class="auth-card">
+      <h2>Welcome Back</h2>
+      <p class="subtitle">Login to Ink My Mind</p>
+
+      <form id="loginForm">
+        <input type="email" id="email" placeholder="Email" required />
+        <input type="password" id="password" placeholder="Password" required />
+
+        <button type="submit">Login</button>
+      </form>
+
+      <p id="message"></p>
+
+
+      <p class="switch">
+        Don’t have an account?
+        <a href="signup.html">Sign Up</a>
+      </p>
+    </div>
+  </div>
+
+  <script>
+  const form = document.getElementById("loginForm");
+  const message = document.getElementById("message");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    try {
+      const res = await fetch("http://localhost:5000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ email, password })
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        message.innerText = data.message;
+        message.style.color = "red";
+        return;
+      }
+
+      message.innerText = data.message;
+      message.style.color = "green";
+
+      // Save user info (temporary)
+      localStorage.setItem("userId", data.userId);
+      localStorage.setItem("username", data.username);
+
+      setTimeout(() => {
+        window.location.href = "welcome.html";
+      }, 2000);
+
+    } catch (err) {
+      message.innerText = "Server error";
+      message.style.color = "red";
+    }
+  });
+</script>
+
+</body>
+</html>

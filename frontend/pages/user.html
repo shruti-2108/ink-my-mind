@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Diary | Ink My Mind</title>
+  <link rel="stylesheet" href="../css/user.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  
+
+
+  <!-- HEADER -->
+  <header class="user-header">
+    <img src="../images/logo.png" alt="Ink My Mind" class="user-logo">
+    <nav>
+      <a href="#">Write</a>
+      <a href="#">My Thoughts</a>
+      <a href="#">Explore</a>
+      <a href="index.html">Logout</a>
+      <a id="welcome" href="#"></a>
+      <!-- <i id="welcome"class="fa-regular fa-user"></i> -->
+    </nav>
+  </header>
+
+  <!-- DIARY AREA -->
+  <main class="diary">
+
+    <!-- WRITE SECTION -->
+    <section class="write">
+      <h2><i class="fa-solid fa-pen"></i> Write Your Thought</h2>
+      <textarea id="thoughtInput" placeholder="Pour your thoughts here..."></textarea>
+      <button id="saveThought">Save Thought</button>
+    </section>
+
+    <!-- ENTRIES -->
+    <section id="thoughtsContainer" class="entries">
+      <h2><i class="fa-solid fa-book"></i> My Diary</h2>
+
+      <div class="entry">
+        <span class="date">18 December 2025</span>
+        <p>Today I started building Ink My Mind. It feels peaceful writing here.</p>
+      </div>
+
+      <div class="entry">
+        <span class="date">17 December 2025</span>
+        <p>Writing thoughts makes my mind lighter and calmer.</p>
+      </div>
+    </section>
+
+  </main>
+  <script>
+  const userId = localStorage.getItem("userId");
+  const username = localStorage.getItem("username");
+
+  if (!userId) {
+    window.location.href = "login.html";
+  }
+
+  document.getElementById("welcome").innerText =
+    username;
+
+  const saveBtn = document.getElementById("saveThought");
+  const input = document.getElementById("thoughtInput");
+  const container = document.getElementById("thoughtsContainer");
+
+  // Save thought
+  saveBtn.addEventListener("click", async () => {
+    const content = input.value;
+
+    const res = await fetch("http://localhost:5000/api/auth/add-thought", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId, content })
+    });
+
+    const data = await res.json();
+    alert(data.message);
+    input.value = "";
+    loadThoughts();
+  });
+
+  // Load thoughts
+  async function loadThoughts() {
+    const res = await fetch(
+      `http://localhost:5000/api/auth/thoughts/${userId}`
+    );
+    const thoughts = await res.json();
+
+    container.innerHTML = "";
+
+    thoughts.forEach(t => {
+      const div = document.createElement("div");
+      div.className = "thought-card";
+      div.innerText = t.content;
+      container.appendChild(div);
+    });
+  }
+
+  loadThoughts();
+</script>
+
+</body>
+</html>
